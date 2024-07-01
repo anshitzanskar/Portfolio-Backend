@@ -1,0 +1,53 @@
+{
+    "cash": 11200,
+    "exposure": {
+        "gross": 10,
+        "max_abs": 6,
+        "net": 2
+    },
+    "margin": {
+        "exposure": 1769.764,
+        "span": 8270.36
+    },
+    "markout": {
+        "Fair": 0.0
+    },
+    "positions": [
+        {
+            "buy_position": 0,
+            "buy_premium": 0,
+            "carry_position": 0,
+            "carry_premium": 0,
+            "sell_position": -4,
+            "sell_premium": -13600,
+            "zanskar_name": "OPT_NIFTY_20240229_PE_25400"
+        },
+        {
+            "buy_position": 6,
+            "buy_premium": 2400,
+            "carry_position": 0,
+            "carry_premium": 0,
+            "sell_position": 0,
+            "sell_premium": 0,
+            "zanskar_name": "OPT_NIFTY_20240229_CE_24250"
+        }
+    ],
+    "premium": {
+        "bought": 2400,
+        "carry": 0,
+        "sold": -13600
+    },
+    "pv": {
+        "Fair": 0.0
+    },
+    "risk": {
+        "Fair": {
+            "convexity": 0.0,
+            "delta": 0.0,
+            "gamma": 0.0,
+            "slope": 0.0,
+            "vega": 0.0
+        }
+    },
+    "tc": 0.16232480000000002
+}
