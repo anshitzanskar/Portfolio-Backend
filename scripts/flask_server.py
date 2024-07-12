@@ -4,7 +4,7 @@ import logging
 from pathlib import Path
 from datetime import datetime
 from flask_cors import CORS
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask
 
 logging.basicConfig(level=logging.INFO)
 logger= logging.getLogger(__name__)
@@ -12,7 +12,7 @@ logger= logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app)
 
-DIRECTORY = f"../portfolios"
+DIRECTORY = f"{Path.home()}/Portfolio-Backend/portfolios"
 today_date = datetime.now().strftime('%Y%m%d')
 
 @app.route('/portfolioFiles', methods=['GET'])
@@ -24,10 +24,6 @@ def list_json_files():
             data = json.load(f)
             combined_portf_object[file] = data
     return combined_portf_object
-
-# @app.route('/json-files/<filename>', methods=['GET'])
-# def get_json_file(filename):
-#     return send_from_directory(DIRECTORY, filename)
 
 if __name__ == '__main__':
     app.run(port=3000, debug=True)
