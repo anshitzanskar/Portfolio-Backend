@@ -12,11 +12,9 @@ from flask_socketio import SocketIO
 logging.basicConfig(level=logging.INFO)
 logger= logging.getLogger(__name__)
 
-#local constants
 DIRECTORY = f"{Path.home()}/Portfolio-Backend/portfolios"
 today_date = datetime.now().strftime('%Y%m%d')
 
-#Flask server origins
 app = Flask(__name__)
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -34,17 +32,9 @@ def get_portf_data():
 def background_thread():
     while True:
         data = get_portf_data()
-        logger.info("Sending portfolio data")
         socketio.emit('data',data)
         time.sleep(0.2)
 
-#Data hosted on http as backup
-@app.route('/portfolioFiles')
-def get_data():
-    data = get_portf_data()
-    return data
-
-#Socket connection and transmission functions
 @socketio.on('connect')
 def handle_connect():
     print('Client connected')
@@ -58,7 +48,6 @@ def handle_connect():
 def handle_disconnect():
     print('Client disconnected')
 
-#Main function
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=3000, debug=True)
                                         
