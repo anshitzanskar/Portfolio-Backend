@@ -2,6 +2,7 @@ import os
 import json
 import time
 import logging
+import argparse
 from pathlib import Path
 from datetime import datetime
 from threading import Thread, Event
@@ -9,10 +10,14 @@ from flask import Flask
 from flask_cors import CORS
 from flask_socketio import SocketIO
 
+parser = argparse.ArgumentParser(description="Script to deploy portfolio data on socketIO")
+parser.add_argument('-d', '--dir', type=str, help='Portfolio Directory')
+args = parser.parse_args()
+
 logging.basicConfig(level=logging.INFO)
 logger= logging.getLogger(__name__)
 
-DIRECTORY = f"{Path.home()}/Portfolio-Backend/portfolios"
+DIRECTORY = args.dir
 today_date = datetime.now().strftime('%Y%m%d')
 
 app = Flask(__name__)
